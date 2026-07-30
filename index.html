@@ -1,0 +1,318 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Asterisk Soft — Unity tools</title>
+<meta name="description" content="Asterisk Soft builds focused, well-documented tools for Unity developers." />
+<link rel="icon" href="assets/logo.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --bg:        #09080d;
+    --bg-panel:  #131019;
+    --line:      #2a2433;
+    --violet:    #9b6bf2;
+    --magenta:   #e14fd0;
+    --ink:       #f3f1f7;
+    --ink-muted: #a79fb3;
+    --ink-faint: #6f6780;
+    --radius: 10px;
+  }
+
+  *{ box-sizing: border-box; }
+  html{ scroll-behavior: smooth; }
+
+  body{
+    margin:0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: "IBM Plex Sans", system-ui, sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a{ color: inherit; }
+  a:focus-visible, button:focus-visible{
+    outline: 2px solid var(--magenta);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+
+  .wrap{
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  /* ---------------------------------------------------------------- header */
+  header{
+    padding: 22px 0;
+    border-bottom: 1px solid var(--line);
+  }
+  header .wrap{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap: 16px;
+  }
+  .brand{
+    display:flex;
+    align-items:center;
+    gap: 10px;
+    font-family: "Space Grotesk", sans-serif;
+    font-weight: 500;
+    font-size: 17px;
+    letter-spacing: 0.01em;
+    text-decoration:none;
+  }
+  .brand img{ width: 28px; height: 28px; display:block; border-radius: 6px; }
+  nav{ display:flex; gap: 26px; }
+  nav a{
+    font-size: 14px;
+    color: var(--ink-muted);
+    text-decoration:none;
+  }
+  nav a:hover{ color: var(--ink); }
+
+  /* ------------------------------------------------------------------ hero */
+  .hero{
+    position: relative;
+    padding: 88px 0 70px;
+    overflow: hidden;
+    text-align:center;
+  }
+  .hero::before{
+    content:"";
+    position:absolute;
+    top: -180px;
+    left: 50%;
+    width: 620px;
+    height: 620px;
+    transform: translateX(-50%);
+    background:
+      radial-gradient(circle at 50% 45%, rgba(155,107,242,0.35), transparent 60%),
+      radial-gradient(circle at 55% 55%, rgba(225,79,208,0.22), transparent 55%);
+    filter: blur(10px);
+    z-index: 0;
+    animation: bloom 9s ease-in-out infinite;
+  }
+  @media (prefers-reduced-motion: reduce){
+    .hero::before{ animation: none; }
+  }
+  @keyframes bloom{
+    0%, 100% { opacity: 0.75; transform: translateX(-50%) scale(1); }
+    50%      { opacity: 1;    transform: translateX(-50%) scale(1.06); }
+  }
+
+  .hero-inner{ position:relative; z-index:1; }
+  .hero img.mark{
+    width: 92px;
+    height: 92px;
+    margin-bottom: 26px;
+  }
+  .hero h1{
+    font-family: "Space Grotesk", sans-serif;
+    font-weight: 700;
+    font-size: clamp(32px, 5vw, 44px);
+    letter-spacing: -0.01em;
+    margin: 0 0 14px;
+  }
+  .hero p{
+    max-width: 480px;
+    margin: 0 auto;
+    color: var(--ink-muted);
+    font-size: 16.5px;
+  }
+
+  /* --------------------------------------------------------------- section */
+  section{ padding: 56px 0; border-top: 1px solid var(--line); }
+  .eyebrow{
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin: 0 0 10px;
+  }
+  h2{
+    font-family: "Space Grotesk", sans-serif;
+    font-weight: 500;
+    font-size: 24px;
+    margin: 0 0 28px;
+  }
+
+  /* ------------------------------------------------------------ asset card */
+  .card{
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    gap: 24px;
+    background: var(--bg-panel);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    overflow: hidden;
+  }
+  .card img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .card-body{
+    padding: 22px 22px 22px 0;
+    display:flex;
+    flex-direction:column;
+  }
+  .card-body h3{
+    font-family: "Space Grotesk", sans-serif;
+    font-size: 19px;
+    font-weight: 500;
+    margin: 0 0 8px;
+  }
+  .card-body p{
+    color: var(--ink-muted);
+    font-size: 14.5px;
+    margin: 0 0 18px;
+    flex-grow: 1;
+  }
+  .tags{
+    display:flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 18px;
+  }
+  .tag{
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 11.5px;
+    color: var(--ink-muted);
+    border: 1px solid var(--line);
+    border-radius: 5px;
+    padding: 3px 8px;
+  }
+  .btn{
+    display: inline-flex;
+    align-items:center;
+    gap: 8px;
+    align-self: flex-start;
+    background: var(--ink);
+    color: #14101c;
+    text-decoration:none;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 9px 16px;
+    border-radius: 7px;
+    transition: opacity 0.15s ease;
+  }
+  .btn:hover{ opacity: 0.85; }
+  .btn svg{ width: 13px; height: 13px; }
+
+  @media (max-width: 560px){
+    .card{ grid-template-columns: 1fr; }
+    .card img{ aspect-ratio: 3/2; }
+    .card-body{ padding: 4px 18px 22px; }
+  }
+
+  /* ------------------------------------------------------------- contact */
+  .contact-row{
+    display:flex;
+    align-items:baseline;
+    justify-content:space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .contact-row a{
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 16px;
+    text-decoration: none;
+    border-bottom: 1px solid var(--violet);
+  }
+  .contact-row a:hover{ color: var(--magenta); border-color: var(--magenta); }
+  .note{ color: var(--ink-faint); font-size: 13.5px; margin-top: 10px; }
+
+  /* --------------------------------------------------------------- footer */
+  footer{
+    border-top: 1px solid var(--line);
+    padding: 26px 0 40px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap: wrap;
+    gap: 10px;
+    color: var(--ink-faint);
+    font-size: 13px;
+  }
+  footer .brand{ font-size: 13px; color: var(--ink-faint); }
+  footer .brand img{ width: 16px; height: 16px; opacity: 0.8; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <a class="brand" href="#top">
+      <img src="assets/logo.png" alt="" />
+      Asterisk Soft
+    </a>
+    <nav>
+      <a href="#assets">Assets</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<div id="top"></div>
+<section class="hero">
+  <div class="wrap hero-inner">
+    <img class="mark" src="assets/logo.png" alt="Asterisk Soft logo" />
+    <h1>Asterisk Soft</h1>
+    <p>Focused, well-documented tools for Unity developers.</p>
+  </div>
+</section>
+
+<section id="assets">
+  <div class="wrap">
+    <p class="eyebrow">Unity Asset Store</p>
+    <h2>Assets</h2>
+
+    <div class="card">
+      <img src="assets/los-thumbnail.jpg" alt="Line of Sight Renderer" />
+      <div class="card-body">
+        <h3>Line of Sight Renderer</h3>
+        <p>Player sight detection for 3D top-down and isometric games. Exact 3D occlusion, terrain support, and gameplay visibility queries that share one source of truth with the visuals.</p>
+        <div class="tags">
+          <span class="tag">Unity 6</span>
+          <span class="tag">URP</span>
+          <span class="tag">3D</span>
+        </div>
+        <a class="btn" href="https://u3d.as/463b" target="_blank" rel="noopener">
+          View on Asset Store
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap">
+    <p class="eyebrow">Get in touch</p>
+    <h2>Contact</h2>
+    <div class="contact-row">
+      <a href="mailto:asterisksoftunity@gmail.com">asterisksoftunity@gmail.com</a>
+    </div>
+    <p class="note">For support, bug reports, and feature requests. English only.</p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap" style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
+    <span class="brand"><img src="assets/logo.png" alt="" /> Asterisk Soft</span>
+    <span>&copy; 2026 Asterisk Soft</span>
+  </div>
+</footer>
+
+</body>
+</html>
