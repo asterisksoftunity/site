@@ -4,14 +4,14 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Asterisk Soft — Unity tools</title>
-<meta name="description" content="Asterisk Soft builds focused, well-documented tools for Unity developers." />
+<meta name="description" content="Developer of Unity Asset Store Packages, Shaders, VFX" />
 <link rel="icon" href="assets/logo.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
 <style>
   :root{
-    --bg:        #09080d;
+    --bg:        #000000;
     --bg-panel:  #131019;
     --line:      #2a2433;
     --violet:    #9b6bf2;
@@ -48,40 +48,10 @@
     padding: 0 24px;
   }
 
-  /* ---------------------------------------------------------------- header */
-  header{
-    padding: 22px 0;
-    border-bottom: 1px solid var(--line);
-  }
-  header .wrap{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    gap: 16px;
-  }
-  .brand{
-    display:flex;
-    align-items:center;
-    gap: 10px;
-    font-family: "Space Grotesk", sans-serif;
-    font-weight: 500;
-    font-size: 17px;
-    letter-spacing: 0.01em;
-    text-decoration:none;
-  }
-  .brand img{ width: 28px; height: 28px; display:block; border-radius: 6px; }
-  nav{ display:flex; gap: 26px; }
-  nav a{
-    font-size: 14px;
-    color: var(--ink-muted);
-    text-decoration:none;
-  }
-  nav a:hover{ color: var(--ink); }
-
   /* ------------------------------------------------------------------ hero */
   .hero{
     position: relative;
-    padding: 88px 0 70px;
+    padding: 120px 0 70px;
     overflow: hidden;
     text-align:center;
   }
@@ -130,14 +100,6 @@
 
   /* --------------------------------------------------------------- section */
   section{ padding: 56px 0; border-top: 1px solid var(--line); }
-  .eyebrow{
-    font-family: "IBM Plex Mono", monospace;
-    font-size: 12px;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--ink-faint);
-    margin: 0 0 10px;
-  }
   h2{
     font-family: "Space Grotesk", sans-serif;
     font-weight: 500;
@@ -244,26 +206,13 @@
     color: var(--ink-faint);
     font-size: 13px;
   }
+  .brand{ display:flex; align-items:center; gap: 8px; }
   footer .brand{ font-size: 13px; color: var(--ink-faint); }
-  footer .brand img{ width: 16px; height: 16px; opacity: 0.8; }
+  footer .brand img{ width: 16px; height: 16px; opacity: 0.8; display:block; }
 </style>
 </head>
 <body>
 
-<header>
-  <div class="wrap">
-    <a class="brand" href="#top">
-      <img src="assets/logo.png" alt="" />
-      Asterisk Soft
-    </a>
-    <nav>
-      <a href="#assets">Assets</a>
-      <a href="#contact">Contact</a>
-    </nav>
-  </div>
-</header>
-
-<div id="top"></div>
 <section class="hero">
   <div class="wrap hero-inner">
     <img class="mark" src="assets/logo.png" alt="Asterisk Soft logo" />
@@ -274,7 +223,6 @@
 
 <section id="assets">
   <div class="wrap">
-    <p class="eyebrow">Unity Asset Store</p>
     <h2>Assets</h2>
 
     <div class="card">
@@ -298,12 +246,11 @@
 
 <section id="contact">
   <div class="wrap">
-    <p class="eyebrow">Get in touch</p>
     <h2>Contact</h2>
     <div class="contact-row">
       <a href="mailto:asterisksoftunity@gmail.com">asterisksoftunity@gmail.com</a>
     </div>
-    <p class="note">For support, bug reports, and feature requests. English only.</p>
+    <p class="note">For support, bug reports, and feature requests.</p>
   </div>
 </section>
 
